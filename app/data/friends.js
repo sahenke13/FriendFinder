@@ -1,18 +1,12 @@
-var friends =[
+var friendsArray =[
 
 
 
-    
+
 ];
 
 
 
 
 
-
-
-
-
-
-
-module.exports(friends);
+module.exports = friendsArray;
