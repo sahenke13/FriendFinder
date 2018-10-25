@@ -16,8 +16,11 @@ app.use(bodyParser.json());
 
 //comment here
 
-require(path.join(__dirname,'./app/routing/apiRoutes.js'))(app);
-require(path.join(__dirname, '/app/routing/htmlRoutes.js'))(app);
+let apiRoutes = require('./app/routing/apiRoutes.js');
+let htmlRoutes = require('./app/routing/htmlRoutes.js');
+
+apiRoutes(app);
+htmlRoutes(app);
 
 
 

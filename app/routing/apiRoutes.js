@@ -52,12 +52,13 @@ app.post("/api/friends", function(req, res){
             console.log("diff is: "+ diff);
                 if(diff <= minDiff){
                     minDiff = diff;
-                    bestMatch = Friends[i].name;
+                    bestMatch = Friends[i];
+                    bestName = Friends[i].name;
                     bestPhoto = Friends[i].photo;
                 }
         }
         console.log("Total diff is: " + diff)
-        console.log("BestMatch is :"+ bestMatch);
+        console.log("BestMatch is :"+ bestMatch.name);
         diff = 0;
         
 
@@ -65,7 +66,7 @@ app.post("/api/friends", function(req, res){
 
     //Push UserInput into Friends Array 
     Friends.push(userInput);
-    
+    res.json(bestMatch)
 
 });
 };

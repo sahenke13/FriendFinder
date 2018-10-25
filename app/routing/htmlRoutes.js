@@ -11,13 +11,11 @@ module.exports = function(app){
 
 
     app.get("/survey",function(req, res){
-        console.log("Yah something happened")
         res.sendFile(path.join(__dirname, '../public/survey.html'));
     
     });
     
     app.get("/",function(req, res){
-        console.log("Yah different something happened")
         res.sendFile(path.join(__dirname, '../public/home.html'));
     
     });

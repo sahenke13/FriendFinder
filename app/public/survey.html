@@ -35,7 +35,7 @@
         <select id='quest1'>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3(indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
         </select>
@@ -46,10 +46,9 @@
             Animals are a huge part of my life
         </h4>
         <select id='quest2'>
-            <option selected>Select</option>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3 (indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
 
@@ -61,10 +60,9 @@
             I would rather read a great novel, than watch mediocre movie
         </h4>
         <select id='quest3'>
-            <option selected>Select</option>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3 (indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
 
@@ -76,10 +74,9 @@
             I am comfortable in uncomfortable situations
         </h4>
         <select id='quest4'>
-            <option selected>Select</option>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3 (indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
         </select>
@@ -90,10 +87,9 @@
             I enjoy being smacked on the ass and called someones bitch.
         </h4>
         <select id='quest5'>
-            <option selected>Select</option>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3 (indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
 
@@ -105,10 +101,9 @@
             I like to sleep by myself in a dark room with padded walls
         </h4>
         <select id='quest6'>
-            <option selected>Select</option>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3 (indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
 
@@ -120,10 +115,9 @@
             I really like spicy food
         </h4>
         <select id='quest7'>
-            <option selected>Select</option>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3 (indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
         </select>
@@ -134,10 +128,9 @@
             Summer is my favorite time of year
         </h4>
         <select id='quest8'>
-            <option selected>Select</option>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3 (indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
         </select>
@@ -148,10 +141,9 @@
             Cooking is one of my favorite hobbies
         </h4>
         <select id='quest9'>
-            <option selected>Select</option>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3 (indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
         </select>
@@ -162,18 +154,16 @@
             I'm only happy when it rains
         </h4>
         <select id='quest10'>
-            <option selected>Select</option>
             <option value="1">1 (strongly agree)</option>
             <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="3">3 (indifferent)</option>
             <option value="4">4</option>
             <option value="5">5 (strongly disagree)</option>
         </select>
         <br>
         <br>
         <button id="submitButton" type="Button" data-toggle="modal" data-target="#yourMatch" class="btn btn-primary btn-lg btn-block">Let's
-            Meet
-            My Friend</button>
+            Meet My Friend</button>
         <hr>
     </div>
 
@@ -198,7 +188,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Something other than dots. I want my Match and photo here.
+                    
+                    <span id = "matchName"></span>
+                    <span id ="matchPhoto"></span>
                 </div>
                 <div class="modal-footer">
                     <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/sahenke13/FriendFinder">GitHub</a>
@@ -239,12 +231,22 @@
 
             };
 
-            $.post("/api/friends", friendInput).then(function () {
+            $.post("/api/friends", friendInput).done( function (data) {
                 console.log("Something is working here")
-                $('#yourMatch').modal(open)
+
+                console.log( "MatchName is : " + data.name);
+                console.log( "MatchPhoto is : " + data.photo);
+
+                //bring in 
+                $("#matchName").text(data.name)
+                $("#matchPhoto").html(data.photo)
+                $('#yourMatch').modal(open);
             });
 
             console.log(friendInput);
+            //reset values after posting
+            $("#name").val(" ");
+            $("#photo").val(" ");
 
 
         });
