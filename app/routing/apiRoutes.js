@@ -14,21 +14,29 @@ module.exports= function(app){
 
 
 app.get("/api/friends",function(req, res){
-    for(let i in res){
-        res.json();
-    }
+    
+    console.log("\nYou are in the /api/friends file path\n")
+    console.log("++++++++++++++++++++++++++++++++++")
+    res.json(Friends)
+    // console.log("\nyour req.body is: " + res.json(Friends))
+
+    
+
 });
 
 
 
 
 app.post("/api/friends", function(req, res){
+    console.log("\nThis is your api friends folder")
+    const userInput = req.body;
+    
+    console.log("Your req.body is here: " + userInput)
+    var newFriend = JSON.stringify(req.body);
+    console.log(newFriend);
 
-    var newFriend = req.body;
+    Friends.push(userInput);
+    
 
-
-    friendsArray.push(newFriend);
-
-    res.json(newFriend);
 });
 };
