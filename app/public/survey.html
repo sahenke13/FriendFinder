@@ -4,12 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <title>Friend Finder Survey Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"  crossorigin="anonymous"></script>
-   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
 
 <body>
 
@@ -167,7 +171,8 @@
         </select>
         <br>
         <br>
-        <button  id="submitButton" type="Button" class="btn btn-primary btn-lg btn-block">Let's Meet My Friend</button>
+        <button id="submitButton" type="Button" data-toggle="modal" data-target="#yourMatch" class="btn btn-primary btn-lg btn-block">Let's Meet
+            My Friend</button>
         <hr>
     </div>
 
@@ -176,9 +181,37 @@
     <br>
 
     <footer>
-        <a href=""></a>
-        <a href=""></a>
+        <div class="container sticky-bottom">
+            <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/sahenke13/FriendFinder">GitHub</a>
+        </div>
     </footer>
+    <!-- Let's add the Modal down here.-->
+    <div class="modal fade" id="yourMatch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Your Magically Match is!!!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Something other than dots.  I want my Match and photo here.
+                </div>
+                <div class="modal-footer">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
     <script type="text/javascript">
 
 
@@ -193,6 +226,7 @@
                 scores: [
                     $("#quest1").val().trim(),
                     $("#quest2").val().trim(),
+                    $("#quest3").val().trim(),
                     $("#quest4").val().trim(),
                     $("#quest5").val().trim(),
                     $("#quest6").val().trim(),
@@ -204,20 +238,17 @@
 
             };
 
-            $.post("/api/friends", friendInput).then(function(){
+            $.post("/api/friends", friendInput).then(function () {
                 console.log("Something is working here")
+                $('#yourMatch').modal(open)
             });
 
             console.log(friendInput);
 
-           
+
         });
 
-
     </script>
-    
-    
-
 </body>
 
 </html>

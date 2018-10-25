@@ -14,27 +14,56 @@ module.exports= function(app){
 
 
 app.get("/api/friends",function(req, res){
-    
     console.log("\nYou are in the /api/friends file path\n")
     console.log("++++++++++++++++++++++++++++++++++")
     res.json(Friends)
-    // console.log("\nyour req.body is: " + res.json(Friends))
-
-    
-
 });
 
 
 
 
 app.post("/api/friends", function(req, res){
-    console.log("\nThis is your api friends folder")
-    const userInput = req.body;
     
-    console.log("Your req.body is here: " + userInput)
-    var newFriend = JSON.stringify(req.body);
-    console.log(newFriend);
+    //Bring in UserInput Values from form.
 
+    const userInput = req.body;
+    console.log("Your name is : " + userInput.name);
+    console.log("Your scores are : " + userInput.scores);
+
+    //initialize a few variables
+    var bestMatch = "";
+    var diff = 0;
+    var totalFriendDiff;
+    var minDiff = 1000;
+
+
+    for(let i in Friends){
+
+        console.log("\nFriends name is: " +Friends[i].name );
+        console.log("Your name is : " + userInput.name);
+        
+
+        for(let j in Friends[i].scores){
+
+            console.log("Friends scores are: " + Friends[i].scores[j] );
+            console.log("Your Scores are: " + userInput.scores[j]);
+
+            diff += Math.abs(parseInt(Friends[i].scores[j]) - parseInt(userInput.scores[j]));
+            console.log("diff is: "+ diff);
+                if(diff <= minDiff){
+                    minDiff = diff;
+                    bestMatch = Friends[i].name;
+                    bestPhoto = Friends[i].photo;
+                }
+        }
+        console.log("Total diff is: " + diff)
+        console.log("BestMatch is :"+ bestMatch);
+        diff = 0;
+        
+
+    }
+
+    //Push UserInput into Friends Array 
     Friends.push(userInput);
     
 
