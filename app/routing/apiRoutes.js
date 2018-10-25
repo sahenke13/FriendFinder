@@ -45,18 +45,21 @@ app.post("/api/friends", function(req, res){
 
         for(let j in Friends[i].scores){
 
-            console.log("Friends scores are: " + Friends[i].scores[j] );
+            console.log("\nFriends scores are: " + Friends[i].scores[j] );
             console.log("Your Scores are: " + userInput.scores[j]);
 
             diff += Math.abs(parseInt(Friends[i].scores[j]) - parseInt(userInput.scores[j]));
             console.log("diff is: "+ diff);
-                if(diff <= minDiff){
+        }
+            console.log("total difference is : " + diff)        
+            if(diff < minDiff){
+
                     minDiff = diff;
                     bestMatch = Friends[i];
                     bestName = Friends[i].name;
                     bestPhoto = Friends[i].photo;
                 }
-        }
+        
         console.log("Total diff is: " + diff)
         console.log("BestMatch is :"+ bestMatch.name);
         diff = 0;

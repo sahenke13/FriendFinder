@@ -17,7 +17,7 @@
 
 <body>
 
-    <h2 class="text-center"><i class="far fa-user-circle"></i> A few quick questions, and a new friend awaits</h2>
+    <h2 class="text-center"><a href = "/"><i id = 'iconHome' class="far fa-user-circle"></a></i> A few quick questions, and a new friend awaits</h2>
     <hr>
     <div class="container">
         <h3 class="text-left">Your Info</h3>
@@ -173,7 +173,7 @@
 
     <footer>
         <div class="container sticky-bottom">
-            <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/sahenke13/FriendFinder">GitHub</a>
+            <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/sahenke13">GitHub</a>
         </div>
     </footer>
     <!-- Let's add the Modal down here.-->
@@ -188,12 +188,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    
-                    <span id = "matchName"></span>
+                    <div>Your Match is: 
+                          <span id = "matchName"></span>
+                    </div>
+                    <div>
                     <span id ="matchPhoto"></span>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="/api/friends">API Friends Link</a> | <a href="https://github.com/sahenke13/FriendFinder">GitHub</a>
+                    
 
                 </div>
             </div>
@@ -206,6 +209,12 @@
 
 
     <script type="text/javascript">
+
+        $("#iconHome").on("click", function(){
+
+            href = '/'
+
+        });
 
 
         $("#submitButton").on("click", function (event) {
@@ -239,7 +248,7 @@
 
                 //bring in 
                 $("#matchName").text(data.name)
-                $("#matchPhoto").html(data.photo)
+                $("#matchPhoto").html('<img src ="'+data.photo+'" width = "400px">')
                 $('#yourMatch').modal(open);
             });
 
