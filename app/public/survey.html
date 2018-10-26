@@ -8,6 +8,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -188,7 +189,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div>Your Match is: 
+                    <div>
                           <span id = "matchName"></span>
                     </div>
                     <div>
@@ -202,10 +203,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
 
     <script type="text/javascript">
@@ -241,11 +238,7 @@
             };
 
             $.post("/api/friends", friendInput).done( function (data) {
-                console.log("Something is working here")
-
-                console.log( "MatchName is : " + data.name);
-                console.log( "MatchPhoto is : " + data.photo);
-
+    
                 //bring in 
                 $("#matchName").text(data.name)
                 $("#matchPhoto").html('<img src ="'+data.photo+'" width = "400px">')
@@ -253,9 +246,21 @@
             });
 
             console.log(friendInput);
+
+
             //reset values after posting
             $("#name").val(" ");
             $("#photo").val(" ");
+                $("#quest1").val(1);
+                $("#quest2").val(1);
+                $("#quest3").val(1);
+                $("#quest4").val(1);
+                $("#quest5").val(1);
+                $("#quest6").val(1);
+                $("#quest7").val(1);
+                $("#quest8").val(1);
+                $("#quest9").val(1);
+                $("#quest10").val(1);
 
 
         });

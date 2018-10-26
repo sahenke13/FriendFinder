@@ -24,8 +24,8 @@ htmlRoutes(app);
 
 
 
-//start the server to begin listening
+
 app.listen(PORT, function() {
-    // Log (server-side) when our server has started
+
     console.log("Server listening on: http://localhost:" + PORT);
   });
