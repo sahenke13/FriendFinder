@@ -15,17 +15,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
-
 <body>
 
-    <h2 class="text-center"><a href = "/"><i id = 'iconHome' class="far fa-user-circle"></a></i> A few quick questions, and a new friend awaits</h2>
+    <h2 class="text-center"><a href = "/"><i id = 'iconHome' class="far fa-user-circle"></a></i> A Few Quick Questions, And A New Friend Awaits</h2>
     <hr>
     <div class="container">
         <h3 class="text-left">Your Info</h3>
         <h4 class="text-left">Name (required)</h4>
-        <input class="text-left" type="text" id="name" clase="form-control" required>
+        <input  type="text" id="name" class="form-control" required>
         <h4 class="text-left">Link to a Photo Image</h4>
-        <input class="text-left" type="text" id="photo" clase="form-control" required>
+        <input  type="text" id="photo" class="form-control" required>
         <hr>
         <h3>
             <strong>Question 1</strong>
@@ -58,7 +57,7 @@
             <strong>Question 3</strong>
         </h3>
         <h4>
-            I would rather read a great novel, than watch mediocre movie
+            I would rather read a great novel, than watch a mediocre movie.
         </h4>
         <select id='quest3'>
             <option value="1">1 (strongly agree)</option>
@@ -72,7 +71,7 @@
             <strong>Question 4</strong>
         </h3>
         <h4>
-            I am comfortable in uncomfortable situations
+            I am comfortable in uncomfortable situations.
         </h4>
         <select id='quest4'>
             <option value="1">1 (strongly agree)</option>
@@ -85,7 +84,7 @@
             <strong>Question 5</strong>
         </h3>
         <h4>
-            I enjoy being smacked on the ass and called someones bitch.
+            The state fair is one of my favorite events every year.
         </h4>
         <select id='quest5'>
             <option value="1">1 (strongly agree)</option>
@@ -99,7 +98,7 @@
             <strong>Question 6</strong>
         </h3>
         <h4>
-            I like to sleep by myself in a dark room with padded walls
+            I prefer to shower in the morning.
         </h4>
         <select id='quest6'>
             <option value="1">1 (strongly agree)</option>
@@ -113,7 +112,7 @@
             <strong>Question 7</strong>
         </h3>
         <h4>
-            I really like spicy food
+            I really like spicy food, the spicier the better
         </h4>
         <select id='quest7'>
             <option value="1">1 (strongly agree)</option>
@@ -163,7 +162,7 @@
         </select>
         <br>
         <br>
-        <button id="submitButton" type="Button" data-toggle="modal" data-target="#yourMatch" class="btn btn-primary btn-lg btn-block">Let's
+        <button id="submitButton" type="Button"  data-toggle="modal" data-target="#yourMatch" class="btn btn-primary btn-lg btn-block">Let's
             Meet My Friend</button>
         <hr>
     </div>
@@ -178,7 +177,7 @@
         </div>
     </footer>
     <!-- Let's add the Modal down here.-->
-    <div class="modal fade" id="yourMatch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    <div class="modal fade text-center" id="yourMatch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -190,7 +189,7 @@
                 </div>
                 <div class="modal-body">
                     <div>
-                          <span id = "matchName"></span>
+                   <h2><span id = "matchName"></span></h2> 
                     </div>
                     <div>
                     <span id ="matchPhoto"></span>
@@ -208,17 +207,12 @@
     <script type="text/javascript">
 
         $("#iconHome").on("click", function(){
-
-            href = '/'
-
+            href = '/';
         });
-
-
-        $("#submitButton").on("click", function (event) {
-            event.preventDefault();
-
-            console.log("The Submit Button has been pressed");
-
+        
+ 
+        $("#submitButton").on("click", function () {
+          
             var friendInput = {
                 name: $("#name").val().trim(),
                 photo: $("#photo").val().trim(),
@@ -237,20 +231,18 @@
 
             };
 
-            $.post("/api/friends", friendInput).done( function (data) {
+            $.post("/api/friends", friendInput).done(function (data) {
     
-                //bring in 
+                //bring in data 
                 $("#matchName").text(data.name)
                 $("#matchPhoto").html('<img src ="'+data.photo+'" width = "400px">')
                 $('#yourMatch').modal(open);
+
             });
 
-            console.log(friendInput);
-
-
             //reset values after posting
-            $("#name").val(" ");
-            $("#photo").val(" ");
+                $("#name").val("");
+                $("#photo").val("");
                 $("#quest1").val(1);
                 $("#quest2").val(1);
                 $("#quest3").val(1);
@@ -261,6 +253,9 @@
                 $("#quest8").val(1);
                 $("#quest9").val(1);
                 $("#quest10").val(1);
+
+
+
 
 
         });

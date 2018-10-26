@@ -1,6 +1,12 @@
 # FriendFinder
 A Mock Friend Finder App
 
+By Steven Henke
+
+Looking for a new friend.  Take this survey and see what locals might make good friends.
+
+Don't forget to add a photo.
+
 
 |Method|Path|Data In|Data Out|Description|
 |-----|----|----|-----|-----|

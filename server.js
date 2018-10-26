@@ -18,11 +18,10 @@ app.use(bodyParser.json());
 
 let apiRoutes = require('./app/routing/apiRoutes.js');
 let htmlRoutes = require('./app/routing/htmlRoutes.js');
+app.use(express.static('./app/public/'));
 
 apiRoutes(app);
 htmlRoutes(app);
-
-
 
 
 app.listen(PORT, function() {
